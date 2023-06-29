@@ -5,7 +5,7 @@ if __name__ == "__main__":
     with open("url.json", "r") as f:
         data = json.loads(f.read())
     urls = []
-    for domain in walk_obj(data, r".*\.woa.com\.?$"):
+    for domain in walk_obj(data, r".*\.example.com\.?$"):
         domain = domain.strip(".*")
         urls += [f"http://{domain}", f"https://{domain}"]
 

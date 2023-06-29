@@ -13,8 +13,10 @@ def request(method: str="GET", url: str="", proxy: str="", *args, **kwargs)->req
     except:
         return None
     kwargs["verify"] = False
-    kwargs["allow_redirects"] = True
-    kwargs["timeout"] = 3
+    if kwargs.get("allow_redirects") is None:
+        kwargs["allow_redirects"] = True
+    if kwargs.get("timeout") is None:
+        kwargs["timeout"] = 3
     if proxy != "":
         kwargs["proxies"] = {
             "http": proxy,
